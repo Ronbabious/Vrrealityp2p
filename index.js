@@ -1,12 +1,14 @@
 const Gpio = require('onoff').Gpio // #A
 const sensorLib = require('node-dht-sensor')
 
+sensorLib.initialize(11, 12) // #A
 const led = new Gpio(4, 'out') // #B
-let interval
-interval = setInterval(() => { // #C
+
+const interval = setInterval(() => { // #C
  let value = (led.readSync() + 1) % 2 // #D
+ let readout = sensorLib.read();
+ console.log('Temperature izt: ' + readout.temperature.toFixed(2) + 'C, ' + 'Humidity: ' + readout.humidity.toFixed(2) + '%')
  led.write(value, () => { // #E
- console.log('Changed LED state to: ' + value)
  })
 }, 2000)
 process.on('SIGINT', () => { // #F
