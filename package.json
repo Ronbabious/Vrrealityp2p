@@ -1,0 +1,18 @@
+{
+  "name": "p2pvrreality",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.au.dk:au577483/p2pvrreality.git"
+  },
+  "author": "Johannes, Christian, Aron",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
