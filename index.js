@@ -2,7 +2,6 @@ const gpio = require('onoff').Gpio // #A
 const sensorLib = require('node-dht-sensor')
 const Gpio = require('pigpio').Gpio;
 
-const MICROSECDONDS_PER_CM = 1e6/34321;
 const trigger = new Gpio(23, {mode: Gpio.OUTPUT});
 const echo = new Gpio(24, {mode: Gpio.INPUT, alert: true});
 
@@ -11,19 +10,10 @@ sensorLib.initialize(11, 12) // #A
 const led = new gpio(4, 'out') // #B
 
 const watchHCSR04 = () => {
-    let startTick;
-  
-    echo.on('alert', (level, tick) => {
-      if (level == 1) {
-        startTick = tick;
-      } else {
-        const endTick = tick;
-        const diff = (endTick >> 0) - (startTick >> 0); // Unsigned 32 bit arithmetic
-        console.log(diff / 2 / MICROSECDONDS_PER_CM);
-      }
-    });
-  };
-  
+    let duration;
+    const distance = duration*0.034/2;
+    console.log(distance);
+}
 
 watchHCSR04();
 const interval = setInterval(() => { // #C
