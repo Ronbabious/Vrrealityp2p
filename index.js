@@ -5,10 +5,12 @@ const Gpio = require('pigpio').Gpio;
 const MICROSECDONDS_PER_CM = 1e6 / 34321;
 const trigger = new Gpio(23, { mode: Gpio.OUTPUT });
 const echo = new Gpio(24, { mode: Gpio.INPUT, alert: true });
-
+var   sonic = 1;
+var   temp = 1;
+var   humii = 1;
 const http = require('http');
 
-const hostname = '127.0.0.1';
+const hostname = '172.20.10.5';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
@@ -18,10 +20,10 @@ const server = http.createServer((req, res) => {
 		'Distance: ' +
 			sonic +
 			' , Temperature: ' +
-			readout.temperature.toFixed(2) +
+			temp +
 			'C' +
 			', Humidity: ' +
-			readout.humidity.toFixed(2) +
+			humii +
 			'%'
 	);
 
@@ -50,6 +52,8 @@ const server = http.createServer((req, res) => {
 		let value = (led.readSync() + 1) % 2; // #D
 		let readout = sensorLib.read();
 		trigger.trigger(10, 1); // Set trigger high for 10 microseconds
+		temp = readout.temperature.toFixed(2);
+		humii = readout.humidity.toFixed(2)
 		console.log(
 			'Temperature izt: ' +
 				readout.temperature.toFixed(2) +
