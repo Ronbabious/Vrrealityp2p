@@ -1,4 +1,4 @@
-const Gpio = require('onoff').Gpio // #A
+const gpio = require('onoff').Gpio // #A
 const sensorLib = require('node-dht-sensor')
 const Gpio = require('pigpio').Gpio;
 
@@ -8,7 +8,7 @@ const echo = new Gpio(24, {mode: Gpio.INPUT, alert: true});
 
 trigger.digitalWrite(0); // Make sure trigger is low
 sensorLib.initialize(11, 12) // #A
-const led = new Gpio(4, 'out') // #B
+const led = new gpio(4, 'out') // #B
 
 const watchHCSR04 = () => {
     let startTick;
@@ -24,8 +24,8 @@ const watchHCSR04 = () => {
     });
   };
   
-watchHCSR04();
 
+watchHCSR04();
 const interval = setInterval(() => { // #C
  let value = (led.readSync() + 1) % 2 // #D
  let readout = sensorLib.read();
