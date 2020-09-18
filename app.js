@@ -13,6 +13,9 @@ trigger.digitalWrite(0); // Make sure trigger is low
 dht.initialize(11, 12); // #A
 const led = new onoff(4, 'out'); // #B
 
+const hostname = 'localhost';
+const port = 3000; 
+
 
 var   counter = 0;
 var   sonic = 1;
@@ -71,10 +74,12 @@ process.on('SIGINT', () => {
 
 app.get('/', (req, res) => res.send(createResponse()))
 
-app.listen(3000, () => console.log('Server ready'))
+app.listen(3000, () => 
+    console.log(`Server ready on: ${hostname}:${port}`) 
+)
 
 function createResponse() {
     var res = `Distance: ${sonic}, Temperature: ${temp} C, Humidity: ${humii} %, Counter: ${counter}`
-    console.log(res);
+    console.log('Update');
     return res
 }
