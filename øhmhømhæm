@@ -1,0 +1,11 @@
+FROM anderswiggers/arm32v7pigpio:latest
+
+RUN apk add nano && apk add sudo
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000

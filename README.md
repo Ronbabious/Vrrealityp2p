@@ -13,3 +13,5 @@ sudo node index.js
 // Efter 2 sekunder, refresh siden for at få det nyeste data (siden starter med placeholder værdier)
 
 // The End
+
+docker run -ti --privileged -p 3000:3000 --device /dev/gpiomem  sudo_node /bin/sh
