@@ -1,0 +1,41 @@
+{
+    "pi": {
+        "name": "PiReality",
+        "sensors": {
+            "dht11":{
+                "description":"DHT11 sensor for temperature and humidity sensing",
+                "temperature":{
+                    "unit": "celsius",
+                    "value": 0,
+                    "gpio":""
+                },
+                "humidity":{
+                    "unit": "%",
+                    "value": 0,
+                    "gpio":""
+                }
+            },
+            "distance sensor":{
+                "name":"HR-SRO4",
+                "description": "ultra sonic sensor for distance sensing",
+                "value": 0,
+                "unit": "centimeters",
+                "gpio": ""
+            }
+        },
+        "actuators": {
+            "leds": {
+                "1":{
+                    "value": "false",
+                    "color": "green",
+                    "gpio": ""
+                },
+                "2":{
+                    "value": "false",
+                    "color": "red",
+                    "gpio": ""
+                }
+            }
+        }
+    }
+}
