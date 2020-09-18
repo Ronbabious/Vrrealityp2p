@@ -27,14 +27,14 @@
         "actuators": {
             "leds": {
                 "1":{
-                    "value": "false",
+                    "value": false,
                     "color": "green",
-                    "gpio": ""
+                    "gpio": "2"
                 },
                 "2":{
-                    "value": "false",
+                    "value": false,
                     "color": "red",
-                    "gpio": ""
+                    "gpio": "22"
                 }
             }
         }

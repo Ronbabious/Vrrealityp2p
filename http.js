@@ -1,3 +1,4 @@
+var bodyParser = require('body-parser');
 var express = require('express'),
     actuatorsRoutes = require('./routes/actuators.js'),
     sensorRoutes = require('./routes/sensors.js'),

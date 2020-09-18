@@ -1,8 +1,9 @@
-var resources = require('../resources');
+var resources = require('./resources');
 //var pluginName = resources.pi.sensors.pir.name;
 const onoff = require('onoff').Gpio;
 
-const led = new onoff(2, 'out');
+const led = new onoff(22, 'out');
+
 
 //start and stop plugin, make it exportable to other node.js files
 exports.on = function () {
