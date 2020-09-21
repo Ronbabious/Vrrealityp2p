@@ -2,13 +2,15 @@
 
 1. Clone repository
 
-   git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone1
+   `git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone1`
 
 2. Open "p2pvrreality"
 
+   `cd p2pvrreality`
+
 3. Start the server
 
-   sudo node app.js
+   `sudo node app.js`
 
 4. Følg linket i terminalen for at åbne det korrekte URL (burde være 127.0.0.1:3000)
 
