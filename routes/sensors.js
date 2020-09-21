@@ -15,12 +15,12 @@ router.route('/pir').get(function (req, res, next) {
 });
 
 router.route('/temperature').get(function (req, res, next) {
-    req.result = resources.pi.sensors.temperature;
+    req.result = resources.pi.sensors.dht11.temperature;
     next();
 });
 
 router.route('/humidity').get(function (req, res, next) {
-    req.result = resources.pi.sensors.humidity;
+    req.result = resources.pi.sensors.dht11.humidity;
     next();
 });
 

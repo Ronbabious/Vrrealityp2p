@@ -16,7 +16,7 @@
                     "gpio":""
                 }
             },
-            "distance sensor":{
+            "pir":{
                 "name":"HR-SRO4",
                 "description": "ultra sonic sensor for distance sensing",
                 "value": 0,
