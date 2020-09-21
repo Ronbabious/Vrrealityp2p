@@ -1,23 +1,27 @@
 /* NOT IMPLEMENTED */
 
 var express = require('express'),
-router = express.Router(),
-resources = require('../resources.json');
+    router = express.Router(),
+    resources = require('../resources.json');
 
 router.route('/').get(function (req, res, next) {
-    res.send(resources.pi.sensors);
-    });
+    req.result = resources.pi.sensors;
+    next();
+});
 
-    router.route('/pir').get(function (req, res, next) {
-    res.send(resources.pi.sensors.pir);
-    });
+router.route('/pir').get(function (req, res, next) {
+    req.result = resources.pi.sensors.pir;
+    next();
+});
 
-    router.route('/temperature').get(function (req, res, next) {
-    res.send(resources.pi.sensors.temperature);
-    });
+router.route('/temperature').get(function (req, res, next) {
+    req.result = resources.pi.sensors.temperature;
+    next();
+});
 
-    router.route('/humidity').get(function (req, res, next) {
-    res.send(resources.pi.sensors.humidity);
-    });
+router.route('/humidity').get(function (req, res, next) {
+    req.result = resources.pi.sensors.humidity;
+    next();
+});
 
-    module.exports = router;
+module.exports = router;
