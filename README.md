@@ -1,20 +1,19 @@
 # TODO
 
-// Hent repository
+1. Clone repository
 
-git clone git@gitlab.au.dk:au577483/p2pvrreality.git
+   git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone1
 
-// Åben mappen p2pvrreality
+2. Open "p2pvrreality"
 
-// Start serveren
+3. Start the server
 
-sudo node index.js
+   sudo node app.js
 
-// Følg linket i terminalen for at åbne det korrekte URL (burde være 127.0.0.1:3000)
-
-// Efter 2 sekunder, refresh siden for at få det nyeste data (siden starter med placeholder værdier)
-
-// The End
+4. Følg linket i terminalen for at åbne det korrekte URL (burde være 127.0.0.1:3000)
 
 
-docker run -ti --privileged -p 3000:3000 --device /dev/gpiomem  sudo_node /bin/sh
+
+### If docker is used, use the following command to run the docker image. This opens the terminal and give the correct privileges to docker to acces rpi GPIO.
+
+   docker run -ti --privileged -p 3000:3000 <name_of_image> /bin/sh
