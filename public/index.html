@@ -1,0 +1,26 @@
+<!doctype html>
+
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>API buttons VR Reality</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <script type="text/javascript" src="/public/button.js"></script>
+</head>
+
+<body>
+  <div id="content">
+    <button onclick="putData(1)">LED 1</button>
+    <br>
+    <button onclick="putData(2)">LED 2</button>
+    <p id="temp">Temperature: </p>
+    <p id="hum">Humidity: </p>
+    <p id="dis">Distance: </p>
+    <button onclick="fetchData('/pi/actuators/leds/1/value')">alert data</button>
+  </div>
+</body>
+</html>
+
