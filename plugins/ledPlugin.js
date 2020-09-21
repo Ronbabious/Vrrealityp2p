@@ -9,29 +9,25 @@ const led2 = new onoff(22, 'out');
 
 //start and stop plugin, make it exportable to other node.js files
 exports.on = function (led) {
-    if(led == 1){
-        var ledVal = resources.pi.actuators.leds[1].value;
+    if(led == 1){        
+        var ledVal = resources.pi.actuators.leds[1].value;    
+        ledVal = !ledVal;    
+        resources.pi.actuators.leds[1].value = ledVal;
 
-        led1.write(ledVal);
+
+        led1.write(ledVal ? 1:0);
 
         var val = ledVal ? "on":"off";
         console.info(`Turned ${val} led ${led}`);
+    }
+    if(led == 2){
+        var ledVal = resources.pi.actuators.leds[2].value;
+        ledVal = !ledVal;        
+        resources.pi.actuators.leds[2].value = ledVal;
 
-        resources.pi.actuators.leds[1].value = !ledVal;
+        led2.write(ledVal ? 1:0);
+
+        var val = ledVal ? "on":"off";
+        console.info(`Turned ${val} led ${led}`);
     }
-    if(led == 2){
-        led2.write(1);
-        console.info(`Turned on led ${led}`);
-    }
-};
-exports.off = function (led) {
-    if(led == 1){
-        led1.write(0);
-        console.info(`Turned off led ${led}`);
-    }
-    if(led == 2){
-        led2.write(0);
-        console.info(`Turned off led ${led}`);
-    }
-    //console.info('%s plugin stopped!', pluginName);
 };
