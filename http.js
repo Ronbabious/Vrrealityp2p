@@ -8,7 +8,8 @@ var express = require('express'),
 app = express();
 
 //app.use(cors());
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use('/pi/actuators', actuatorsRoutes);
 app.use('/pi/sensors', sensorRoutes);
 app.get('/pi', function (req, res) {
