@@ -8,14 +8,18 @@
 
    `cd p2pvrreality`
 
-3. Start the server
+3. Install depedencies using npm
+   
+   `npm install`
+
+4. Start the server
 
    `sudo node app.js`
 
-4. Følg linket i terminalen for at åbne det korrekte URL (burde være 127.0.0.1:3000)
+5. Connect to <localIP_of_rpi>:3000 (as long as the machine conencting is on the same network at the raspberry pi) on your prefered browser
 
 
 
 ### If docker is used, use the following command to run the docker image. This opens the terminal and give the correct privileges to docker to acces rpi GPIO.
 
-   docker run -ti --privileged -p 3000:3000 <name_of_image> /bin/sh
+   `docker run -ti --privileged -p 3000:3000 <name_of_image> /bin/sh`
