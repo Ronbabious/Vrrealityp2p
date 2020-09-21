@@ -21,13 +21,13 @@ dht.initialize(11, 12); // #A
 const led = new onoff(4, 'out'); // #B
 
 const hostname = 'localhost';
-const port = 3000; 
+const port = 3000;
 
 
-var   counter = 0;
-var   sonic = 1;
-var   temp = 1;
-var   humii = 1;
+var counter = 0;
+var sonic = 1;
+var temp = 1;
+var humii = 1;
 
 const watchHCSR04 = () => {
     let startTick;
@@ -58,8 +58,8 @@ const interval = setInterval(() => {
     humii = readout.humidity.toFixed(2)
     resources.pi.sensors.dht11.humidity.value = humii;
     resources.pi.sensors.dht11.temperature.value = temp;
-    console.log(
-        `Temperature: ${temp} C, Humidity: ${humii} %, Counter: ${counter}`);
+    //console.log(
+    //    `Temperature: ${temp} C, Humidity: ${humii} %, Counter: ${counter}`);
 }, 2000);
 
 process.on('SIGINT', () => {

@@ -57,12 +57,23 @@ async function putData(led) {
         method: 'PUT',
         mode: 'cors',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/html'
         },
         redirect: 'follow',
         body: JSON.stringify(true)
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error("HTTP error" + response.status)
+        }
+        return response.json();
     })
-
-    return response.json();
-    // return response.json(); // parses JSON response into native JavaScript objects
+        .then(json => {
+            this.users = json;
+            //console.log(this.users);
+        })
+        .catch(function () {
+            this.dataError = true;
+        })
 }
+
+    // return response.json(); // parses JSON response into native JavaScript objects
