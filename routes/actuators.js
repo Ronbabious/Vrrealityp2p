@@ -24,8 +24,11 @@ router.route('/leds/:id').get(function (req, res, next) {
     req.result = resources.pi.actuators.leds[req.params.id];
     next();
 }).put(function (req, res, next) {
-    console.info('Changed LED %s value to %s', req.params.id);
-    ledsPlugin1.on();
+    //console.info('Changed LED %s value to %s', req.params.id);
+    var selectedLed = resources.pi.actuators.leds[req.params.id];
+    selectedLed = true;
+    req.result = selectedLed;
+    ledsPlugin1.on(req.params.id);
     next();
 });
 
