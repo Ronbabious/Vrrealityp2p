@@ -9,7 +9,7 @@ setInterval(function () {
     // document.getElementById('dis').append(distance)
     // document.getElementById('hum').append(humidity)
 
-}, 50000);
+}, 5000);
 
 function fetchData(api) {
     fetch(api)
