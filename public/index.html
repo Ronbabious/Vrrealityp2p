@@ -7,25 +7,38 @@
   <title>API buttons VR Reality</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="./button.js"></script>
-  <script type="module" src="./button.js"></script>
 </head>
 
 <body>
   <div id="content">
-    <button onclick="putData(1,true)">LED 1 - ON</button>
-    <br>
-    <button onclick="putData(1, false)">LED 1 - OFF</button>
-    <br>
-    <button onclick="putData(2, true)">LED 2 - ON</button>
-    <br>
-    <button onclick="putData(2, false)">LED 2 - OFF</button>
-    <p id="temp">Temperature:</p>
+    <div id="led1">
+      <button onclick=putData(1,true)>LED 1 - ON</button>
+      <button onclick=putData(1,false)>LED 1 - OFF</button>
+    </div>
+    <div id="led2">
+      <button onclick=putData(2,true)>LED 2 - ON</button>
+      <button onclick=putData(2,false)>LED 2 - OFF</button>
+    </div>
+    <div>
+      <p class="text">Temperature: </p>
+      <p class="text" id="temp">null</p>
+    </div>
+    <div>
+      <p class="text">Humidity: </p>
+      <p class="text" id="hum">null</p>
+    </div>
+    <div>
+      <p class="text">Distance: </p>
+      <p class="text" id="dis">null</p>
+    </div>
+    <!-- <p id="temp">Temperature: </p>
     <p id="hum">Humidity: </p>
     <p id="dis">Distance: </p>
     <p id="led1">Led 1: </p>
-    <p id="led2">Led 2: </p>
-    <button onclick="fetchData('/pi/actuators/leds/1/value')">alert data</button>
+    <p id="led2">Led 2: </p> -->
+    <!-- <button onclick="fetchData('/pi/actuators/leds/1/value')">alert data</button> -->
   </div>
 </body>
 

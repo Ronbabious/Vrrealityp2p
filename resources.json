@@ -1,7 +1,7 @@
 {
     "pi": {
         "name": "PiReality",
-        "port": 3000,
+        "port": 10022,
         "sensors": {
             "dht11":{
                 "description":"DHT11 sensor for temperature and humidity sensing",

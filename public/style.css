@@ -1,0 +1,12 @@
+#led1 {
+    padding-bottom: 1em;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.text {
+    display:inline;
+}

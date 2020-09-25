@@ -24,7 +24,6 @@ router.route('/leds/2').get(function (req, res, next) {
 });
 
 router.route('/leds/1/value').get(function (req, res, next) {
-    console.log("Skrrt")
     req.result = resources.pi.actuators.leds[1].value;
     next();
 });
@@ -33,6 +32,12 @@ router.route('/leds/2/value').get(function (req, res, next) {
     req.result = resources.pi.actuators.leds[2].value;
     next();
 });
+
+router.route('/leds/2/value').put(function (req, res, next) {
+    console.log("printing inside actuators js")
+    console.log(req);
+    next();
+})
 
 router.route('/leds/:id').get(function (req, res, next) {
     req.result = resources.pi.actuators.leds[req.params.id];

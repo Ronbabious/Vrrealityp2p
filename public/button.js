@@ -2,14 +2,14 @@ console.log("loaded static javascript");
 
 
 setInterval(function () {
-    var distance = fetchData('pi/sensors/pir', 'value')
-    var temperature = fetchData('pi/sensors/temperature', 'value')
-    var humidity = fetchData('pi/sensors/humidity', 'value')
-    document.getElementById('temp').append(temperature)
-    document.getElementById('dis').append(test)
-    document.getElementById('hum').append(humidity)
+    getDataFromSensor('pi/sensors/', 'pir')
+    getDataFromSensor('pi/sensors/', 'temperature')
+    getDataFromSensor('pi/sensors/', 'humidity')
+    // document.getElementById('temp').append(temperature)
+    // document.getElementById('dis').append(distance)
+    // document.getElementById('hum').append(humidity)
 
-}, 5000);
+}, 50000);
 
 function fetchData(api) {
     fetch(api)
@@ -23,7 +23,7 @@ function fetchData(api) {
                 // Examine the text in the response
                 response.json()
                     .then(function (data) {
-                        console.log(data)
+                        //console.log(data.value)
                         return data.value
                     });
             }
@@ -34,17 +34,43 @@ function fetchData(api) {
 }
 
 // Example POST method implementation:
+async function getDataFromSensor(api, sensor) {
+    await fetch(`${api}/${sensor}`)
+        .then(function(response) {
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' + response.status);
+                return;
+            }
+            // console.log(response);
+            response.json()
+                .then(function(data) {
+                    var element;
+                    switch (sensor) {
+                        case "pir":
+                            element = document.getElementById('dis')
+                            break;
+                            
+                        case "temperature":
+                            element = document.getElementById('temp')
+                            break;
+                                
+                        case "humidity":
+                            element = document.getElementById('hum')
+                            break;
 
-// fetch(`pi/actuators/leds/1/value`)
-//     .then(function(response) {
-//         console.log(response);
-//         response.json()
-//             .then(function(data) {
-//                 console.log(data);
-//             });
-//     })
+                        default:
+                            console.log("wrong method call or sensor does not exist")
+                            break;
+                    }
+                    element.innerHTML = data.value;
+                });
+        })
+}
+
 
 async function putData(led, state) {
+    // getData('pi/actuators/leds/1', "value");
+    // fetchData('/pi/actuators/leds/2/value');
     await fetch('/pi/actuators/leds/' + led, {
         method: "PUT",
         body: JSON.stringify({
@@ -55,8 +81,11 @@ async function putData(led, state) {
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
         },
-    }).then(response => response.json()).then(json => {
-        console.log(json);
     })
+    .then(response => 
+        response.json())
+        .then(json => {
+            console.log(json);
+        })
 }
 
