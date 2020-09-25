@@ -3,6 +3,8 @@ const onoff = require('onoff').Gpio;
 const pigpio = require('pigpio').Gpio;
 const dht = require('node-dht-sensor');
 const app = express()
+const resources = require('./resources.json');
+const router = express.Router();
 
 
 const MICROSECDONDS_PER_CM = 1e6 / 34321;
@@ -67,12 +69,21 @@ process.on('SIGINT', () => {
 
 
 
+//Express commands
 
 
 
+app.get('/demos/demo', (req, res) => res.send("HEYO"))
 
+router.route('/sensors').get(function (req, res, next) {
+    res.send(resources.pi.sensors);
+});
 
-app.get('/', (req, res) => res.send(createResponse()))
+app.get('/pi/actuators/leds/:id', (req, res) => {
+    res.send(req.params.id);
+});
+
+module.exports = router;
 
 app.listen(3000, () => 
     console.log(`Server ready on: ${hostname}:${port}`) 
