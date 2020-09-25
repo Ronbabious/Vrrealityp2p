@@ -3,7 +3,7 @@ const onoff = require('onoff').Gpio;
 const pigpio = require('pigpio').Gpio;
 const dht = require('node-dht-sensor');
 const app = express()
-const resources = require('./resources.json');
+const resources = require('../resources.json');
 const router = express.Router();
 
 

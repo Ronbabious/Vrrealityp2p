@@ -2,11 +2,7 @@
 
 1. Clone repository
 
-<<<<<<< HEAD
-   `git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone1`
-=======
    `git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone2`
->>>>>>> johansiundAron
 
 2. Open "p2pvrreality"
 
@@ -18,21 +14,12 @@
 
 4. Start the server
 
-<<<<<<< HEAD
-   `sudo node app.js`
-=======
    `sudo node wot-server.js`
->>>>>>> johansiundAron
 
 5. Connect to <localIP_of_rpi>:3000 (as long as the machine conencting is on the same network at the raspberry pi) on your prefered browser
 
 
 
-<<<<<<< HEAD
-### If docker is used, use the following command to run the docker image. This opens the terminal and give the correct privileges to docker to acces rpi GPIO.
-
-   `docker run -ti --privileged -p 3000:3000 <name_of_image> /bin/sh`
-=======
 
 
 
@@ -73,4 +60,3 @@ To show values of LED:
 http://<localIP_of_rpi>:3000/pi/actuators/leds/1
 and 
 http://<localIP_of_rpi>:3000/pi/actuators/leds/2
->>>>>>> johansiundAron
