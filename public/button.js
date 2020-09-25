@@ -1,15 +1,15 @@
-'use strict'
-
 console.log("loaded static javascript");
 
-// setInterval(function () {
-//     fetchData('pi/sensors/dist', 'distance')
-//     fetchData('pi/sensors/temperature', 'temp')
-//     fetchData('pi/sensors/humidity', 'humid')
-// }, 1000);
-// fetchData('pi/sensors/dist', 'distance')
-// fetchData('pi/sensors/temperature', 'temp')
-// fetchData('pi/sensors/humidity', 'humid')
+
+setInterval(function () {
+    var distance = fetchData('pi/sensors/pir', 'value')
+    var temperature = fetchData('pi/sensors/temperature', 'value')
+    var humidity = fetchData('pi/sensors/humidity', 'value')
+    document.getElementById('temp').append(temperature)
+    document.getElementById('dis').append(test)
+    document.getElementById('hum').append(humidity)
+
+}, 5000);
 
 function fetchData(api) {
     fetch(api)
@@ -24,6 +24,7 @@ function fetchData(api) {
                 response.json()
                     .then(function (data) {
                         console.log(data)
+                        return data.value
                     });
             }
         )
@@ -43,37 +44,19 @@ function fetchData(api) {
 //             });
 //     })
 
-async function putData(led) {
-    // const response = await fetch(`pi/actuators/leds/1`, {
-    //     method: 'PUT',
-    //     mode: 'cors',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     redirect: 'follow',
-    //     body: JSON.stringify(true)
-    // });
-    const response = await fetch('pi/actuators/leds/1', {
-        method: 'PUT',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/html'
-        },
-        redirect: 'follow',
-        body: JSON.stringify(true)
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error("HTTP error" + response.status)
+async function putData(led, state) {
+    await fetch('/pi/actuators/leds/' + led, {
+        method: "PUT",
+        body: JSON.stringify({
+            valueOff: led,
+            onOff: state,
         }
-        return response.json();
+        ),
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+    }).then(response => response.json()).then(json => {
+        console.log(json);
     })
-        .then(json => {
-            this.users = json;
-            //console.log(this.users);
-        })
-        .catch(function () {
-            this.dataError = true;
-        })
 }
 
-    // return response.json(); // parses JSON response into native JavaScript objects
