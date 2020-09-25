@@ -11,11 +11,12 @@ const led2 = new onoff(22, 'out');
 exports.on = function (led, valueLED) {
     resources.pi.actuators.leds[led].value = valueLED;
 
+
     //Change state of corresponding LED
-    if(led == 1){
+    if (led == 1) {
         led1.write(valueLED ? 1 : 0);
     }
-    else if(led == 2){
+    else if (led == 2) {
         led2.write(valueLED ? 1 : 0);
     }
 

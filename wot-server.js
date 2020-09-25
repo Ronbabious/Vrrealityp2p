@@ -48,6 +48,7 @@ const watchHCSR04 = () => {
 watchHCSR04();
 
 
+
 const interval = setInterval(() => {
     // #C
     let value = (led.readSync() + 1) % 2; // #D
