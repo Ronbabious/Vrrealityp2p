@@ -5,33 +5,7 @@ setInterval(function () {
     getDataFromSensor('pi/sensors/', 'pir')
     getDataFromSensor('pi/sensors/', 'temperature')
     getDataFromSensor('pi/sensors/', 'humidity')
-    // document.getElementById('temp').append(temperature)
-    // document.getElementById('dis').append(distance)
-    // document.getElementById('hum').append(humidity)
-
 }, 5000);
-
-function fetchData(api) {
-    fetch(api)
-        .then(
-            function (response) {
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
-                    return;
-                }
-                // Examine the text in the response
-                response.json()
-                    .then(function (data) {
-                        //console.log(data.value)
-                        return data.value
-                    });
-            }
-        )
-        .catch(function (err) {
-            console.log('Fetch Error :-S', err);
-        });
-}
 
 // Example POST method implementation:
 async function getDataFromSensor(api, sensor) {
@@ -41,9 +15,9 @@ async function getDataFromSensor(api, sensor) {
                 console.log('Looks like there was a problem. Status Code: ' + response.status);
                 return;
             }
-            // console.log(response);
             response.json()
                 .then(function(data) {
+                    // Set the correct HTML element with the correct data
                     var element;
                     switch (sensor) {
                         case "pir":
@@ -69,8 +43,6 @@ async function getDataFromSensor(api, sensor) {
 
 
 async function putData(led, state) {
-    // getData('pi/actuators/leds/1', "value");
-    // fetchData('/pi/actuators/leds/2/value');
     await fetch('/pi/actuators/leds/' + led, {
         method: "PUT",
         body: JSON.stringify({

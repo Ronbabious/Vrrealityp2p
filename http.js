@@ -24,29 +24,12 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + "/public/index.html")
 });
 
-// app.put('/pi/actuators/leds/1', function (req, res) {
-//     //ledPlugin.on(req.body.valueOff, req.body.onOff)
-//     console.log("printing 1")
-//     res.sendFile(__dirname + "/resources.json")
-// })
-// app.put('/pi/actuators/leds/2', function (req, res) {
-//     console.log(req.body.valueOff)
-//     res.sendFile(__dirname + "/resources.json")
-// })
-
 app.put('/pi/actuators/leds/:id', function (req, res) {
-        resources.pi.actuators.leds[req.body.valueOff].value = req.body.onOff // If changing values are succesful
-        console.log("i think it works")
-        console.log(`resources: ${resources.pi.actuators.leds[req.body.valueOff].value}, request: ${req.body.onOff}`);
-        res.send(JSON.stringify(resources.pi.actuators.leds[req.body.valueOff].value));
+    resources.pi.actuators.leds[req.body.valueOff].value = req.body.onOff // If changing values are succesful
+    res.status(200);
+    res.send(JSON.stringify(resources.pi.actuators.leds[req.body.valueOff].value));
 })
 
-// app.put('/pi/actuators/leds/2/value', function (req, res) {
-//     console.log("printing request");
-//     console.log(req);
-//     // resources.pi.actuators.leds[2].value;
-//     res.sendFile(__dirname + "/resources.json")
-// })
 app.use(converter())
 
 module.exports = app;
