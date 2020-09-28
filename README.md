@@ -2,7 +2,7 @@
 
 1. Clone repository
 
-   `git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone2`
+   `git clone git@gitlab.au.dk:au577483/p2pvrreality.git --branch milestone2.1`
 
 2. Open "p2pvrreality"
 
@@ -16,7 +16,7 @@
 
    `sudo node wot-server.js`
 
-5. Connect to <localIP_of_rpi>:3000 (as long as the machine conencting is on the same network at the raspberry pi) on your prefered browser
+5. Connect to <localIP_of_rpi>:3000 (as long as the machine connecting is on the same network at the raspberry pi) on your prefered browser
 
 
 
